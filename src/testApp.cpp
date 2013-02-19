@@ -505,17 +505,23 @@ void testApp::copyElementDataToInterface()
 string testApp::getSaveFileName()
 {
     //jump through hoops to create and save a file 
-    ofFileDialogResult saveFileName = ofSystemSaveDialog(curList.getFileName(), "");
-    if(saveFileName.getPath()!="")
-    {
-        return saveFileName.getPath();
-    }
+    string previousFile = curList.getFileName();
+    ofFileDialogResult saveFileName;
     
+    if(previousFile == "OnRabbit.csv" || previousFile == "RabbitDefaults.csv")
+        saveFileName = ofSystemSaveDialog("", "");    
+    else
+         saveFileName = ofSystemSaveDialog(previousFile, "");
+    
+    return saveFileName.getPath();    
 }
 
 //--------------------------------------------------------------
 void testApp::saveToDisk(string saveFileName)
 {
+    if(saveFileName=="")
+        return;
+    
     ofFile tempFile = saveFileName;
     if(!tempFile.exists())
     {
