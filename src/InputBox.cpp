@@ -108,7 +108,7 @@ void InputBox::draw()
     
     ofSetColor(255,255);
     arial.drawString(IP,815,739);
-    arial.drawString("0.4",510,38);
+    arial.drawString("0.7",510,38);
     
 }
 

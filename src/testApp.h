@@ -33,7 +33,8 @@ class testApp : public ofBaseApp{
     void savePrevious(string filename); //method for saving the last used filename
     
     //csv and data methods
-    void saveToFile();
+    string getSaveFileName();
+    void saveToDisk(string filename);
     void loadFromFile();
     string createCsvString();
     void readCsvString(vector<string> message);
