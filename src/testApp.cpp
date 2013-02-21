@@ -609,7 +609,7 @@ string testApp::createCsvString()
     
     //write resolution
     tempString+="1,T,00,41,083,";
-    tempString+=ofToString(ofToHex(ib->resolution),6,' ');
+    tempString+=ofToString(ofToHex(ib->resolution+1),6,' ');
     tempString+=",\n";
     //write emulator
     tempString+="2,T,10,41,243,"+ofToString(ib->emulatorOne+5)+",\n";
@@ -799,6 +799,9 @@ void testApp::loadFromDevice()
     tcpClient.setMessageDelimiter("\n");
     tcpClient.setVerbose(true);
     
+    //clear the previous messages
+    receivedMessage.clear();
+    
     if(!tcpClient.isConnected())
     {
         weConnected=false;
@@ -813,7 +816,6 @@ void testApp::loadFromDevice()
         
         if( s.length() > 0 ){
             receivedMessage.push_back(s);
-            //cout<<s<<endl;
         }
     }
 
@@ -844,19 +846,17 @@ void testApp::saveToDevice()
     while(tcpClient.isConnected())
     {
 
-        //string tempString = createCsvString();
         if(tcpClient.send(createCsvString()))
         {
             ofSystemAlertDialog("Yes! Upload successful!!!");
-            return;
         }else
         {
             ofSystemAlertDialog("Whoops. Upload failed...");
-            return;
         }
         
-        
+        tcpClient.close();
     }
+    
     
     tcpClient.close();
     saveToDisk("OnRabbit.csv");
