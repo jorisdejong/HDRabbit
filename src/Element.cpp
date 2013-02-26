@@ -72,15 +72,13 @@ void Element::draw()
                     bigButton.draw(x,y,w,h);
                 break;
             case 1:
-                rotary.draw(x,y,w,h);
+                if(w == 131 && h == 101)
+                    crossFader.draw(x,y,w,h);
+                if(w == 51 && h == 142)
+                    masterFader.draw(x,y,w,h);
+                if(w == 48 && h == 48)
+                    rotary.draw(x,y,w,h);
                 break;
-            case 2:
-                crossFader.draw(x,y,w,h);
-                break;
-            case 3:
-                masterFader.draw(x,y,w,h);
-                break;
-                
         }
         
         /**
