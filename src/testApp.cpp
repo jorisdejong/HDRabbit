@@ -12,7 +12,7 @@ void testApp::setup(){
     
         
     
-    numberOfSkins = 5;
+    numberOfSkins = 4;
     curSkin = 0;
     
     numberOfElements=22;
