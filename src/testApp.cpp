@@ -106,8 +106,8 @@ void testApp::setup(){
     b[10]=new Knop(945,615,55,20); //save remote CSV
     b[11]=new Knop(885,615,50,20); //load remote CSV
     b[12]=new Knop(170,15,80,20); //reset
-    //b[13]=new Knop(780,730,150,10); //IP
-    b[13]=new Knop(780,640,150,10); //IP
+    b[13]=new Knop(780,730,150,10); //IP
+    //b[13]=new Knop(780,640,150,10); //IP
     b[14]=new Knop(773,348,200,20); //change OSC
     b[15]=new Knop(770,260,210,20);//open emulator two list
     b[16]=new Knop(770,328,210,20);//dhcp output
@@ -209,7 +209,7 @@ void testApp::draw(){
 //        for(int i = 0; i < numberOfButtons; i++)
 //            b[i]->draw();
         
-        b[13]->draw();
+        
 
         
     }
